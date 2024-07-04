@@ -1,0 +1,310 @@
+GET http://localhost:3000/
+
+###
+GET http://localhost:3000/users
+
+###
+GET http://localhost:3000/users/1
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+   "name": "Ifan Xavier",
+   "email": "xaviere@gmail.com",
+   "contact_phone": "0768996531",
+   "address": "London"
+}
+
+###
+PUT http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+   "name": "Ifan Xavier",
+   "email": "ifanxavier@gmail.com",
+    "contact_phone": "0768996531",
+    "address": "London"
+}
+
+###
+DELETE http://localhost:3000/users/1
+
+###
+GET http://localhost:3000/vehicles/1
+
+###
+GET http://localhost:3000/vehicles
+
+###
+POST http://localhost:3000/vehicles
+Content-Type: application/json
+
+{
+    "id": "3",
+   "vehicle_spec_id": "7"
+}
+
+###
+PUT http://localhost:3000/vehicles/4
+Content-Type: application/json
+
+{
+   "vehicle_spec_id": "7"
+}
+
+###
+DELETE http://localhost:3000/vehicles/5
+
+
+###
+GET http://localhost:3000/vehiclespecs
+
+###
+GET http://localhost:3000/vehiclespecs/1
+
+###
+POST http://localhost:3000/vehiclespecs
+Content-Type: application/json
+
+{
+    "manufacturer": "mazda",
+    "model": "axela",
+    "year": "2020",
+    "fuel_type": "petrol",
+    "engine_capacity": "30",
+    "transmission": "automatic",
+    "seating_capacity": "5",
+    "color": "Black",
+    "features": "Air Conditioner"
+}
+
+
+###
+PUT http://localhost:3000/vehiclespecs/1
+Content-Type: application/json
+
+{
+    "manufacturer": "Toyota",
+    "model": "Corolla",
+    "year": "2019",
+    "fuel_capacity": "50L",
+   "engine_capacity": "19",
+   "transmission": "Automatic",
+   "seat_capacity": "5",
+   "color": "Black",
+   "features": "Air Conditioner, Power Steering, Power Windows, Anti-Lock Braking System, Air Bags, Leather Seats, Cruise Control, Keyless Entry, CD Player, Cup Holders, AM/FM Radio, Alloy Wheels"
+}
+
+###
+DELETE http://localhost:3000/vehiclespecs/1
+
+###
+GET http://localhost:3000/locations
+
+###
+GET http://localhost:3000/locations/3
+
+###
+POST http://localhost:3000/locations
+Content-Type: application/json
+
+{
+    "name": "Eldoret",
+    "address": "Eldoret",
+    "contact_phone": "0788678641"
+}
+
+###
+PUT http://localhost:3000/locations/1
+Content-Type: application/json
+
+{
+    "name": "Kigali",
+    "address": "Kigali",
+    "contact_phone": "0705241326"
+}
+
+###
+DELETE http://localhost:3000/locations/1
+
+###
+GET http://localhost:3000/bookings
+
+###
+GET http://localhost:3000/bookings/5
+
+###
+POST http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+    "user_id": "5",
+    "vehicle_id": "4",
+    "location_id": "5",
+    "booking_date": "2024-10-12",
+    "return_date": "2024-10-15",
+    "total_amount": "2100.00"
+}
+
+###
+PUT http://localhost:3000/bookings/2
+Content-Type: application/json
+
+{
+    "user_id": "5",
+    "vehicle_id": "4",
+    "location_id": "5",
+    "booking_date": "2024-04-12",
+    "return_date": "2024-05-15",
+    "total_amount": "3000.00"
+}
+
+###
+DELETE http://localhost:3000/bookings/3
+
+###
+GET http://localhost:3000/payments
+
+###
+GET http://localhost:3000/payments/6
+
+###
+POST http://localhost:3000/payments
+Content-Type: application/json
+
+{
+    "booking_id": "5",
+    "amount": "1000.00",
+    "payment_status": "paid",
+    "payment_date": "2024-07-04",
+    "transaction_id": "123456"
+}
+
+###
+PUT http://localhost:3000/payments/4
+Content-Type: application/json
+
+{
+    "booking_id": "5",
+    "amount": "1500.00",
+    "payment_date": "2024-07-04",
+    "transaction_id": "1276556"
+}
+
+###
+DELETE http://localhost:3000/payments/1
+
+###
+GET http://localhost:3000/customerSupportTickets
+
+###
+GET http://localhost:3000/customerSupportTickets/2
+
+###
+POST http://localhost:3000/customerSupportTickets
+Content-Type: application/json
+
+{
+    "user_id": "5",
+    "subject": "Complaint",
+    "description": "Harrassment by the driver"
+}
+
+###
+PUT http://localhost:3000/customerSupportTickets/1
+Content-Type: application/json
+
+{
+    "user_id": "5",
+    "subject": "Complaint",
+    "message": "The vehicle was not clean and the driver was rude"
+}
+
+###
+DELETE http://localhost:3000/customerSupportTickets/1
+
+###
+GET http://localhost:3000/fleet
+
+###
+GET http://localhost:3000/fleet/2
+
+###
+POST http://localhost:3000/fleet
+Content-Type: application/json
+
+{
+    "vehicle_id": "6",
+    "acquisition_date": "2024-07-04",
+    "depreciation_rate": "0.05",
+    "current_value": "300000.00",
+    "maintenance_cost": "3000.00"
+}
+
+###
+PUT http://localhost:3000/fleet/1
+Content-Type: application/json
+
+{
+    "vehicle_id": "3",
+    "acquisition_date": "2024-07-04",
+    "depreciation_rate": "0.10",
+    "current_value": "500000.00",
+    "maintenance_cost": "30000.00"
+}
+
+###
+DELETE http://localhost:3000/fleet/1
+
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "name": "Xavier Junior",
+    "password": "12345678",
+   "email": "junior@gmail.com",
+   "contact_phone": "0768996531",
+   "address": "London"
+}
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+   "email": "junior@gmail.com",
+    "password": "12345678"
+}
+
+###
+GET http://localhost:3000/users/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJyb2xlIjoidXNlciIsImVtYWlsIjoianVuaW9yQGdtYWlsLmNvbSIsImV4cCI6MTcyMDA5ODIzNX0.xqXLSPnSXWy_KBZYVzoSWRzH90QicP-dv4Kj_sM5R-U
+
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "name": "Xavier Mikh",
+    "password": "127493873",
+   "email": "junxav@gmail.com",
+   "contact_phone": "0768996531",
+   "address": "London",
+   "role": "admin"
+}
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+   "email": "junxav@gmail.com",
+       "password": "127493873"
+}
+
+###
+GET http://localhost:3000/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJqdW54YXZAZ21haWwuY29tIiwiZXhwIjoxNzIwMDk5MDQ1fQ.QowUikw40JQhE4A3Vi5ylgMETBSN4KSCSWxI6ZiutwE
