@@ -39,7 +39,7 @@ export const createOneLocation = async (c: Context) => {
 export const updateOneLocation = async (c: Context) => {
     try {
         const id = parseInt(c.req.param("id"));
-        if (isNaN(id)) return c.text("Invalid ID", 400);
+        if (isNaN(id)) return c.json("Invalid ID", 400);
 
         const location = await c.req.json();
         await updateLocation(id, location);
