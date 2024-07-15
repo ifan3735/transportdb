@@ -7,7 +7,7 @@ export const listBookings = async (c: Context) => {
 
         const data = await bookingsService(limit);
         if (data == null || data.length == 0) {
-            return c.text('No bookings found');
+            return c.json('No bookings found');
         }
         return c.json(data);
     }   catch (error: any) {
@@ -17,11 +17,11 @@ export const listBookings = async (c: Context) => {
 
 export const getBooking = async (c: Context) => {
     const id = parseInt(c.req.param("id"));
-    if (isNaN(id)) return c.text("Invalid ID", 400);
+    if (isNaN(id)) return c.json("Invalid ID", 400);
 
     const booking = await getBookingService(id);
     if (booking == undefined) {
-        return c.text("Booking not found", 404);
+        return c.json("Booking not found", 404);
     }
     return c.json(booking, 200);
 }
@@ -30,7 +30,7 @@ export const createOneBooking = async (c: Context) => {
     try {
         const booking = await c.req.json();
         await createBooking(booking);
-        return c.text("Booking created successfully", 201);
+        return c.json("Booking created successfully", 201);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
@@ -43,7 +43,7 @@ export const updateOneBooking = async (c: Context) => {
 
         const booking = await c.req.json();
         await updateBooking(id, booking);
-        return c.text("Booking updated successfully", 200);
+        return c.json("Booking updated successfully", 200);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
@@ -55,7 +55,7 @@ export const deleteBooking = async (c: Context) => {
         if (isNaN(id)) return c.text("Invalid ID", 400);
 
         await deleteOneBooking(id);
-        return c.text("Booking deleted successfully", 200);
+        return c.json("Booking deleted successfully", 200);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }

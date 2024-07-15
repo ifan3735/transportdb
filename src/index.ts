@@ -9,9 +9,9 @@ import { paymentRouter } from './payment/payment.router'
 import { customerSupportTicketRouter } from './custsupp/custSupp.router'
 import { fleetRouter } from './fleet/fleet.router'
 import { authRouter } from './auth/auth.router'
-import { cors } from 'hono/cors';
 import 'dotenv/config'
 
+import { cors } from 'hono/cors';
 
 const app = new Hono()
 

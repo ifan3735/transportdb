@@ -7,7 +7,7 @@ export const listFleetManagement = async (c: Context) => {
 
         const data = await fleetManagementService(limit);
         if (data == null || data.length == 0) {
-            return c.text('No fleet management found');
+            return c.json('No fleet management found');
         }
         return c.json(data);
     }   catch (error: any) {
@@ -21,7 +21,7 @@ export const getFleetManagementOne = async (c: Context) => {
 
     const fleetManagement = await getFleetManagement(id);
     if (fleetManagement == undefined) {
-        return c.text("Fleet Management not found", 404);
+        return c.json("Fleet Management not found", 404);
     }
     return c.json(fleetManagement, 200);
 }
@@ -30,7 +30,7 @@ export const createOneFleetManagement = async (c: Context) => {
     try {
         const fleetManagement = await c.req.json();
         await createFleetManagement(fleetManagement);
-        return c.text("Fleet Management created successfully", 201);
+        return c.json("Fleet Management created successfully", 201);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
@@ -43,7 +43,7 @@ export const updateOneFleetManagement = async (c: Context) => {
 
         const fleetManagement = await c.req.json();
         await updateFleetManagement(id, fleetManagement);
-        return c.text("Fleet Management updated successfully", 200);
+        return c.json("Fleet Management updated successfully", 200);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
@@ -55,7 +55,7 @@ export const deleteFleetManagementOne = async (c: Context) => {
         if (isNaN(id)) return c.text("Invalid ID", 400);
 
         await deleteFleetManagement(id);
-        return c.text("Fleet Management deleted successfully", 200);
+        return c.json("Fleet Management deleted successfully", 200);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }

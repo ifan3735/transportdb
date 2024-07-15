@@ -5,6 +5,11 @@ import { eq } from "drizzle-orm";
 export const vehiclesService = async (limit?: number) => {
     if (limit) {
         return await db.query.vehiclesTable.findMany({
+            with: {
+                bookings: true,
+                fleet_management: true,
+                vehicle_specs: true,
+            },
             limit: limit,
         });
     }
@@ -13,6 +18,11 @@ export const vehiclesService = async (limit?: number) => {
 
 export const getVehicleService = async (id: number) => {
     return await db.query.vehiclesTable.findFirst({
+        with: {
+            bookings: true,
+            fleet_management: true,
+            vehicle_specs: true,
+        },
         where: eq(vehiclesTable.id, id),
     });
 };

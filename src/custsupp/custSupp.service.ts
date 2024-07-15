@@ -5,6 +5,9 @@ import { eq } from "drizzle-orm";
 export const customerSupportTicketsService = async (limit?: number) => {
     if (limit) {
         return await db.query.customerSupportTicketsTable.findMany({
+            with: {
+                user: true,
+            },
             limit: limit,
         });
     }
@@ -13,6 +16,9 @@ export const customerSupportTicketsService = async (limit?: number) => {
 
 export const getCustomerSupportTicketService = async (id: number) => {
     return await db.query.customerSupportTicketsTable.findFirst({
+        with: {
+            user: true,
+        },
         where: eq(customerSupportTicketsTable.id, id),
     });
 };

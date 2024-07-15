@@ -281,16 +281,15 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/users/5
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJyb2xlIjoidXNlciIsImVtYWlsIjoianVuaW9yQGdtYWlsLmNvbSIsImV4cCI6MTcyMDA5ODIzNX0.xqXLSPnSXWy_KBZYVzoSWRzH90QicP-dv4Kj_sM5R-U
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJqdW54YXZAZ21haWwuY29tIiwiZXhwIjoxNzIwNzk5NTEzfQ.G_uXyyQvg17BaMBkst0U4ztbCXyCEJkH-nqvj_7ayLg
 ###
 POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "name": "Xavier Mikh",
+    "name": "svier Mikh",
     "password": "127493873",
-   "email": "junxav@gmail.com",
+   "email": "jhjgxav@gmail.com",
    "contact_phone": "0768996531",
    "address": "London",
    "role": "admin"
@@ -307,4 +306,4 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJqdW54YXZAZ21haWwuY29tIiwiZXhwIjoxNzIwMDk5MDQ1fQ.QowUikw40JQhE4A3Vi5ylgMETBSN4KSCSWxI6ZiutwE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJqdW54YXZAZ21haWwuY29tIiwiZXhwIjoxNzIwNzk5NTEzfQ.G_uXyyQvg17BaMBkst0U4ztbCXyCEJkH-nqvj_7ayLg

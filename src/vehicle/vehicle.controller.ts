@@ -9,7 +9,7 @@ export const listVehicles = async (c: Context) => {
 
         const data = await vehiclesService(limit);
         if (data == null || data.length == 0) {
-            return c.text('No vehicles found');
+            return c.json('No vehicles found');
         }
         return c.json(data);
     }   catch (error: any) {
@@ -23,7 +23,7 @@ export const getVehicle = async (c: Context) => {
 
     const vehicle = await getVehicleService(id);
     if (vehicle == undefined) {
-        return c.text("Vehicle not found", 404);
+        return c.json("Vehicle not found", 404);
     }
     return c.json(vehicle, 200);
 }
@@ -32,7 +32,7 @@ export const createOneVehicle = async (c: Context) => {
     try {
         const vehicle = await c.req.json();
         await createVehicle(vehicle);
-        return c.text("Vehicle created successfully", 201);
+        return c.json("Vehicle created successfully", 201);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
@@ -41,11 +41,11 @@ export const createOneVehicle = async (c: Context) => {
 export const updateOneVehicle = async (c: Context) => {
     try {
         const id = parseInt(c.req.param("id"));
-        if (isNaN(id)) return c.text("Invalid ID", 400);
+        if (isNaN(id)) return c.json("Invalid ID", 400);
 
         const vehicle = await c.req.json();
         await updateVehicle(id, vehicle);
-        return c.text("Vehicle updated successfully", 200);
+        return c.json("Vehicle updated successfully", 200);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
@@ -57,7 +57,7 @@ export const deleteVehicle = async (c: Context) => {
         if (isNaN(id)) return c.text("Invalid ID", 400);
 
         await deleteOneVehicle(id);
-        return c.text("Vehicle deleted successfully", 200);
+        return c.json("Vehicle deleted successfully", 200);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }

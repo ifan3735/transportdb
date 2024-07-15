@@ -8,13 +8,28 @@ export const usersService = async (limit?: number) => {
     if (limit) {
         return await db.query.usersTable.findMany({
             limit: limit,
+            with: {
+                bookings: true,
+                customer_support_tickets: true,
+            },
         });
     }
-    return await db.query.usersTable.findMany();
+    return await db.query.usersTable.findMany(
+        {
+            with: {
+                bookings: true,
+                customer_support_tickets: true,
+            },
+        },
+    );
 };
 
 export const getUserService = async (id: number) => {
     return await db.query.usersTable.findFirst({
+        with: {
+            bookings: true,
+            customer_support_tickets: true,
+        },
         where: eq(usersTable.id, id),
     });
 };

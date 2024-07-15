@@ -5,14 +5,14 @@ export const userRouter = new Hono();
 import { userRoleAuth, adminRoleAuth, bothRoleAuth} from "../middleware/auth";
 
 //get all users      api/users
-userRouter.get("/users", adminRoleAuth, listUsers);
+userRouter.get("/users", listUsers);
 
 
 //get a single user    api/users/1
-userRouter.get("/users/:id", bothRoleAuth, getUser)
+userRouter.get("/users/:id",  getUser)
 
-userRouter.post("/users", bothRoleAuth, createOneUser)
+userRouter.post("/users", createOneUser)
 
-userRouter.put("/users/:id", bothRoleAuth, updateOneUser)
+userRouter.put("/users/:id",  updateOneUser)
 
-userRouter.delete("/users/:id", bothRoleAuth, deleteUser)
+userRouter.delete("/users/:id",  deleteUser)

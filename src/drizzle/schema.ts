@@ -8,13 +8,13 @@ export const paymentStatusEnum = pgEnum("payment_status", ["pending", "paid"]);
 export const paymentMethodEnum = pgEnum("payment_method", ["credit_card", "debit_card", "paypal"]);
 export const statusEnum = pgEnum("status", ["open", "closed", "active", "inactive"]);
 
-//users table
+//users table`
 export const usersTable = pgTable("users", {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 20 }).notNull(),
     email: varchar("email", { length: 100 }).notNull().unique(),
-    contact_phone: varchar("contact_phone", { length: 20 }).notNull(),
-    address: varchar("address", { length: 100 }).notNull(),
+    contact_phone: varchar("contact_phone", { length: 20 }),
+    address: varchar("address", { length: 100 }),
     role: roleEnum("role").default("user"),
     created_at: date("created_at").notNull().default("now()"),
     updated_at: date("updated_at").notNull().default("now()")

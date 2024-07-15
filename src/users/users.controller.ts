@@ -33,7 +33,7 @@ export const createOneUser = async (c: Context) => {
     try {
         const user = await c.req.json();
         await createUser(user);
-        return c.text("User created successfully", 201);
+        return c.json("User created successfully", 201);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
@@ -47,7 +47,7 @@ export const updateOneUser = async (c: Context) => {
 
         const user = await c.req.json();
         await updateUser(id, user);
-        return c.text("User updated successfully", 200);
+        return c.json("User updated successfully", 200);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }

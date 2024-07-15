@@ -5,6 +5,9 @@ import { eq } from "drizzle-orm";
 export const locationsService = async (limit?: number) => {
     if (limit) {
         return await db.query.locationsTable.findMany({
+            with: {
+                bookings: true,  
+            },
             limit: limit,
         });
     }
@@ -13,6 +16,9 @@ export const locationsService = async (limit?: number) => {
 
 export const getLocationService = async (id: number) => {
     return await db.query.locationsTable.findFirst({
+        with: {
+            bookings: true,
+        },
         where: eq(locationsTable.id, id),
     });
 }

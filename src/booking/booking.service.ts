@@ -1,10 +1,14 @@
 import { db } from "../drizzle/db";
 import { bookingsTable, BookingSelect } from "../drizzle/schema";
-import { eq } from "drizzle-orm";
+import { Column, eq } from "drizzle-orm";
 
 export const bookingsService = async (limit?: number) => {
     if (limit) {
         return await db.query.bookingsTable.findMany({
+            with: {
+                vehicle: true,
+                user: true,
+            },
             limit: limit,
         });
     }
@@ -13,6 +17,10 @@ export const bookingsService = async (limit?: number) => {
 
 export const getBookingService = async (id: number) => {
     return await db.query.bookingsTable.findFirst({
+        with: {
+            vehicle: true,
+            user: true,
+        },
         where: eq(bookingsTable.id, id),
     });
 }
