@@ -17,7 +17,7 @@ export const listCustomerSupportTickets = async (c: Context) => {
 
 export const getCustomerSupportTicket = async (c: Context) => {
     const id = parseInt(c.req.param("id"));
-    if (isNaN(id)) return c.text("Invalid ID", 400);
+    if (isNaN(id)) return c.json("Invalid ID", 400);
 
     const customerSupportTicket = await getCustomerSupportTicketService(id);
     if (customerSupportTicket == undefined) {
@@ -39,7 +39,7 @@ export const createOneCustomerSupportTicket = async (c: Context) => {
 export const updateOneCustomerSupportTicket = async (c: Context) => {
     try {
         const id = parseInt(c.req.param("id"));
-        if (isNaN(id)) return c.text("Invalid ID", 400);
+        if (isNaN(id)) return c.json("Invalid ID", 400);
 
         const customerSupportTicket = await c.req.json();
         await updateCustomerSupportTicket(id, customerSupportTicket);
@@ -52,7 +52,7 @@ export const updateOneCustomerSupportTicket = async (c: Context) => {
 export const deleteCustomerSupportTicket = async (c: Context) => {
     try {
         const id = parseInt(c.req.param("id"));
-        if (isNaN(id)) return c.text("Invalid ID", 400);
+        if (isNaN(id)) return c.json("Invalid ID", 400);
 
         await deleteOneCustomerSupportTicket(id);
         return c.json("Customer Support Ticket deleted successfully", 200);

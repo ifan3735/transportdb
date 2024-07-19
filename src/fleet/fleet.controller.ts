@@ -39,7 +39,7 @@ export const createOneFleetManagement = async (c: Context) => {
 export const updateOneFleetManagement = async (c: Context) => {
     try {
         const id = parseInt(c.req.param("id"));
-        if (isNaN(id)) return c.text("Invalid ID", 400);
+        if (isNaN(id)) return c.json("Invalid ID", 400);
 
         const fleetManagement = await c.req.json();
         await updateFleetManagement(id, fleetManagement);

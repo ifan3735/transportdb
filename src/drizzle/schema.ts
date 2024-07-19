@@ -57,6 +57,7 @@ export type VehicleSpecsSelect = typeof vehicleSpecsTable.$inferSelect;
 export const vehiclesTable = pgTable("vehicles", {
     id: serial("id").primaryKey(),
     vehicle_spec_id: integer("vehicle_spec_id").references(() => vehicleSpecsTable.id, { onDelete: 'cascade' }).notNull(),
+    rental_rate: decimal("rental_rate", { precision: 10, scale: 2 }),
     availability: availabilityEnum("availability").default("available"),
     created_at: date("created_at").notNull().default("now()"),
     updated_at: date("updated_at").notNull().default("now()")

@@ -13,16 +13,50 @@ export const vehiclesService = async (limit?: number) => {
             limit: limit,
         });
     }
-    return await db.query.vehiclesTable.findMany();
+    return await db.query.vehiclesTable.findMany(
+       {
+        columns: {
+            availability: true,
+            id: true,
+            rental_rate: true,
+            created_at: true,
+            updated_at: true,
+        },
+        with: {
+            vehicle_specs: {
+                columns: {
+                    id: true,
+                    manufacturer: true,
+                    seating_capacity: true,
+                    model: true,
+                }
+            },
+            
+        }
+       }
+    );
 };
 
 export const getVehicleService = async (id: number) => {
     return await db.query.vehiclesTable.findFirst({
-        with: {
-            bookings: true,
-            fleet_management: true,
-            vehicle_specs: true,
-        },
+       columns: {
+        availability: true,
+        id: true,
+        rental_rate: true,
+       },
+         with: {
+            vehicle_specs: {
+                columns: {
+                    manufacturer: true,
+                    seating_capacity: true,
+                    model: true,
+                    engine_capacity: true,
+                    year: true,
+                    fuel_type: true,
+                    features: true,
+                }
+            }
+         },
         where: eq(vehiclesTable.id, id),
     });
 };
