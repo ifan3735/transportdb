@@ -11,8 +11,8 @@ const payment_router_1 = require("./payment/payment.router");
 const custSupp_router_1 = require("./custsupp/custSupp.router");
 const fleet_router_1 = require("./fleet/fleet.router");
 const auth_router_1 = require("./auth/auth.router");
-const cors_1 = require("hono/cors");
 require("dotenv/config");
+const cors_1 = require("hono/cors");
 const app = new hono_1.Hono();
 app.use('/*', (0, cors_1.cors)());
 app.get('/', (c) => {

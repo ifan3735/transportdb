@@ -12,6 +12,7 @@ import { authRouter } from './auth/auth.router'
 import 'dotenv/config'
 
 import { cors } from 'hono/cors';
+import { stripeRouter } from './stripe/stripe.router'
 
 const app = new Hono()
 
@@ -30,6 +31,7 @@ app.route('/', paymentRouter)
 app.route('/', customerSupportTicketRouter)
 app.route('/', fleetRouter)
 app.route('/', authRouter)
+app.route('/', stripeRouter)
 
 
 const port = 3000

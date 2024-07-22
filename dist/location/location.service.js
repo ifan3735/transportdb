@@ -7,6 +7,9 @@ const drizzle_orm_1 = require("drizzle-orm");
 const locationsService = async (limit) => {
     if (limit) {
         return await db_1.db.query.locationsTable.findMany({
+            with: {
+                bookings: true,
+            },
             limit: limit,
         });
     }
@@ -15,6 +18,9 @@ const locationsService = async (limit) => {
 exports.locationsService = locationsService;
 const getLocationService = async (id) => {
     return await db_1.db.query.locationsTable.findFirst({
+        with: {
+            bookings: true,
+        },
         where: (0, drizzle_orm_1.eq)(schema_1.locationsTable.id, id),
     });
 };

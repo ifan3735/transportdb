@@ -307,3 +307,25 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/users
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJqdW54YXZAZ21haWwuY29tIiwiZXhwIjoxNzIwNzk5NTEzfQ.G_uXyyQvg17BaMBkst0U4ztbCXyCEJkH-nqvj_7ayLg
+
+
+###
+POST http://localhost:3000/create-payment-intent
+Content-Type: application/json
+
+{
+    "amount": "10000",
+    "currency": "usd",
+    "booking_id": "5"
+}
+
+
+###
+POST http://localhost:3000/create-checkout-session
+Content-Type: application/json
+
+{
+    "amount": "10000",
+    "currency": "usd",
+    "booking_id": "38"
+}

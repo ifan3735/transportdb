@@ -7,6 +7,10 @@ const drizzle_orm_1 = require("drizzle-orm");
 const bookingsService = async (limit) => {
     if (limit) {
         return await db_1.db.query.bookingsTable.findMany({
+            with: {
+                vehicle: true,
+                user: true,
+            },
             limit: limit,
         });
     }
@@ -15,6 +19,10 @@ const bookingsService = async (limit) => {
 exports.bookingsService = bookingsService;
 const getBookingService = async (id) => {
     return await db_1.db.query.bookingsTable.findFirst({
+        with: {
+            vehicle: true,
+            user: true,
+        },
         where: (0, drizzle_orm_1.eq)(schema_1.bookingsTable.id, id),
     });
 };

@@ -7,7 +7,7 @@ const listPayments = async (c) => {
         const limit = Number(c.req.query('limit'));
         const data = await (0, payment_service_1.paymentsService)(limit);
         if (data == null || data.length == 0) {
-            return c.text('No payments found');
+            return c.json('No payments found');
         }
         return c.json(data);
     }
@@ -22,7 +22,7 @@ const getPayment = async (c) => {
         return c.text("Invalid ID", 400);
     const payment = await (0, payment_service_1.getPaymentService)(id);
     if (payment == undefined) {
-        return c.text("Payment not found", 404);
+        return c.json("Payment not found", 404);
     }
     return c.json(payment, 200);
 };
@@ -31,7 +31,7 @@ const createOnePayment = async (c) => {
     try {
         const payment = await c.req.json();
         await (0, payment_service_1.createPayment)(payment);
-        return c.text("Payment created successfully", 201);
+        return c.json("Payment created successfully", 201);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);
@@ -45,7 +45,7 @@ const updateOnePayment = async (c) => {
             return c.text("Invalid ID", 400);
         const payment = await c.req.json();
         await (0, payment_service_1.updatePayment)(id, payment);
-        return c.text("Payment updated successfully", 200);
+        return c.json("Payment updated successfully", 200);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);
@@ -58,7 +58,7 @@ const deletePayment = async (c) => {
         if (isNaN(id))
             return c.text("Invalid ID", 400);
         await (0, payment_service_1.deleteOnePayment)(id);
-        return c.text("Payment deleted successfully", 200);
+        return c.json("Payment deleted successfully", 200);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);

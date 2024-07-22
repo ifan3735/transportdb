@@ -31,7 +31,7 @@ const createOneUser = async (c) => {
     try {
         const user = await c.req.json();
         await (0, users_service_1.createUser)(user);
-        return c.text("User created successfully", 201);
+        return c.json("User created successfully", 201);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);
@@ -45,7 +45,7 @@ const updateOneUser = async (c) => {
             return c.text("Invalid ID", 400);
         const user = await c.req.json();
         await (0, users_service_1.updateUser)(id, user);
-        return c.text("User updated successfully", 200);
+        return c.json("User updated successfully", 200);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);

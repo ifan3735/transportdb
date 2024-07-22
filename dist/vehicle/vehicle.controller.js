@@ -7,7 +7,7 @@ const listVehicles = async (c) => {
         const limit = Number(c.req.query('limit'));
         const data = await (0, vehicle_service_1.vehiclesService)(limit);
         if (data == null || data.length == 0) {
-            return c.text('No vehicles found');
+            return c.json('No vehicles found');
         }
         return c.json(data);
     }
@@ -22,7 +22,7 @@ const getVehicle = async (c) => {
         return c.text("Invalid ID", 400);
     const vehicle = await (0, vehicle_service_1.getVehicleService)(id);
     if (vehicle == undefined) {
-        return c.text("Vehicle not found", 404);
+        return c.json("Vehicle not found", 404);
     }
     return c.json(vehicle, 200);
 };
@@ -31,7 +31,7 @@ const createOneVehicle = async (c) => {
     try {
         const vehicle = await c.req.json();
         await (0, vehicle_service_1.createVehicle)(vehicle);
-        return c.text("Vehicle created successfully", 201);
+        return c.json("Vehicle created successfully", 201);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);
@@ -42,10 +42,10 @@ const updateOneVehicle = async (c) => {
     try {
         const id = parseInt(c.req.param("id"));
         if (isNaN(id))
-            return c.text("Invalid ID", 400);
+            return c.json("Invalid ID", 400);
         const vehicle = await c.req.json();
         await (0, vehicle_service_1.updateVehicle)(id, vehicle);
-        return c.text("Vehicle updated successfully", 200);
+        return c.json("Vehicle updated successfully", 200);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);
@@ -58,7 +58,7 @@ const deleteVehicle = async (c) => {
         if (isNaN(id))
             return c.text("Invalid ID", 400);
         await (0, vehicle_service_1.deleteOneVehicle)(id);
-        return c.text("Vehicle deleted successfully", 200);
+        return c.json("Vehicle deleted successfully", 200);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);

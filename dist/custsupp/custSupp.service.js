@@ -7,6 +7,9 @@ const drizzle_orm_1 = require("drizzle-orm");
 const customerSupportTicketsService = async (limit) => {
     if (limit) {
         return await db_1.db.query.customerSupportTicketsTable.findMany({
+            with: {
+                user: true,
+            },
             limit: limit,
         });
     }
@@ -15,6 +18,9 @@ const customerSupportTicketsService = async (limit) => {
 exports.customerSupportTicketsService = customerSupportTicketsService;
 const getCustomerSupportTicketService = async (id) => {
     return await db_1.db.query.customerSupportTicketsTable.findFirst({
+        with: {
+            user: true,
+        },
         where: (0, drizzle_orm_1.eq)(schema_1.customerSupportTicketsTable.id, id),
     });
 };

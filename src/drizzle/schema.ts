@@ -71,10 +71,10 @@ export const bookingsTable = pgTable("bookings", {
     user_id: integer("user_id").references(() => usersTable.id, { onDelete: 'cascade' }).notNull(),
     vehicle_id: integer("vehicle_id").references(() => vehiclesTable.id, { onDelete: 'cascade' }).notNull(),
     location_id: integer("location_id").references(() => locationsTable.id, { onDelete: 'cascade' }).notNull(),
-    booking_date: date("booking_date").notNull(),
-    return_date: date("return_date").notNull(),
+    booking_date: date("booking_date").notNull().default("now()"),
+    return_date: date("return_date").notNull().default("now()"),
     total_amount: decimal("total_amount", { precision: 10, scale: 2 }).notNull(),
-    booking_status: bookingStatusEnum("booking_status").default("pending"),
+    booking_status: varchar("booking_status", {length: 100}).default("pending"),
     created_at: date("created_at").notNull().default("now()"),
     updated_at: date("updated_at").notNull().default("now()")
 });
@@ -86,9 +86,9 @@ export const paymentsTable = pgTable("payments", {
     id: serial("id").primaryKey(),
     booking_id: integer("booking_id").references(() => bookingsTable.id, { onDelete: 'cascade' }).notNull(),
     amount: decimal("amount", { precision: 10, scale: 2 }).notNull(),
-    payment_status: paymentStatusEnum("payment_status").default("pending"),
-    payment_date: date("payment_date").notNull(),
-    payment_method: paymentMethodEnum("payment_method").default("credit_card"),
+    payment_status: varchar("payment_status", { length: 100 }).default("pending"),
+    payment_date: date("payment_date").notNull().default("now()"),
+    payment_method: varchar("payment_method", { length: 100 }).default("credit_card"),
     transaction_id: varchar("transaction_id", { length: 100 }).notNull(),
     created_at: date("created_at").notNull().default("now()"),
     updated_at: date("updated_at").notNull().default("now()")

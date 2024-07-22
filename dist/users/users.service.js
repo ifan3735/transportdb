@@ -9,13 +9,26 @@ const usersService = async (limit) => {
     if (limit) {
         return await db_1.db.query.usersTable.findMany({
             limit: limit,
+            with: {
+                bookings: true,
+                customer_support_tickets: true,
+            },
         });
     }
-    return await db_1.db.query.usersTable.findMany();
+    return await db_1.db.query.usersTable.findMany({
+        with: {
+            bookings: true,
+            customer_support_tickets: true,
+        },
+    });
 };
 exports.usersService = usersService;
 const getUserService = async (id) => {
     return await db_1.db.query.usersTable.findFirst({
+        with: {
+            bookings: true,
+            customer_support_tickets: true,
+        },
         where: (0, drizzle_orm_1.eq)(schema_1.usersTable.id, id),
     });
 };

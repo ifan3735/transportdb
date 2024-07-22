@@ -7,7 +7,7 @@ const listBookings = async (c) => {
         const limit = Number(c.req.query('limit'));
         const data = await (0, booking_service_1.bookingsService)(limit);
         if (data == null || data.length == 0) {
-            return c.text('No bookings found');
+            return c.json('No bookings found');
         }
         return c.json(data);
     }
@@ -19,10 +19,10 @@ exports.listBookings = listBookings;
 const getBooking = async (c) => {
     const id = parseInt(c.req.param("id"));
     if (isNaN(id))
-        return c.text("Invalid ID", 400);
+        return c.json("Invalid ID", 400);
     const booking = await (0, booking_service_1.getBookingService)(id);
     if (booking == undefined) {
-        return c.text("Booking not found", 404);
+        return c.json("Booking not found", 404);
     }
     return c.json(booking, 200);
 };
@@ -31,7 +31,7 @@ const createOneBooking = async (c) => {
     try {
         const booking = await c.req.json();
         await (0, booking_service_1.createBooking)(booking);
-        return c.text("Booking created successfully", 201);
+        return c.json("Booking created successfully", 201);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);
@@ -45,7 +45,7 @@ const updateOneBooking = async (c) => {
             return c.text("Invalid ID", 400);
         const booking = await c.req.json();
         await (0, booking_service_1.updateBooking)(id, booking);
-        return c.text("Booking updated successfully", 200);
+        return c.json("Booking updated successfully", 200);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);
@@ -58,7 +58,7 @@ const deleteBooking = async (c) => {
         if (isNaN(id))
             return c.text("Invalid ID", 400);
         await (0, booking_service_1.deleteOneBooking)(id);
-        return c.text("Booking deleted successfully", 200);
+        return c.json("Booking deleted successfully", 200);
     }
     catch (error) {
         return c.json({ error: error?.message }, 400);

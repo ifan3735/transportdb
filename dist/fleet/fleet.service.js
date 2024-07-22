@@ -7,6 +7,9 @@ const drizzle_orm_1 = require("drizzle-orm");
 const fleetManagementService = async (limit) => {
     if (limit) {
         return await db_1.db.query.fleetManagementTable.findMany({
+            with: {
+                vehicle: true,
+            },
             limit: limit,
         });
     }
@@ -15,6 +18,9 @@ const fleetManagementService = async (limit) => {
 exports.fleetManagementService = fleetManagementService;
 const getFleetManagement = async (id) => {
     return await db_1.db.query.fleetManagementTable.findFirst({
+        with: {
+            vehicle: true,
+        },
         where: (0, drizzle_orm_1.eq)(schema_1.fleetManagementTable.id, id),
     });
 };

@@ -9,13 +9,13 @@ exports.bookingStatusEnum = (0, pg_core_1.pgEnum)("booking_status", ["pending", 
 exports.paymentStatusEnum = (0, pg_core_1.pgEnum)("payment_status", ["pending", "paid"]);
 exports.paymentMethodEnum = (0, pg_core_1.pgEnum)("payment_method", ["credit_card", "debit_card", "paypal"]);
 exports.statusEnum = (0, pg_core_1.pgEnum)("status", ["open", "closed", "active", "inactive"]);
-//users table
+//users table`
 exports.usersTable = (0, pg_core_1.pgTable)("users", {
     id: (0, pg_core_1.serial)("id").primaryKey(),
     name: (0, pg_core_1.varchar)("name", { length: 20 }).notNull(),
     email: (0, pg_core_1.varchar)("email", { length: 100 }).notNull().unique(),
-    contact_phone: (0, pg_core_1.varchar)("contact_phone", { length: 20 }).notNull(),
-    address: (0, pg_core_1.varchar)("address", { length: 100 }).notNull(),
+    contact_phone: (0, pg_core_1.varchar)("contact_phone", { length: 20 }),
+    address: (0, pg_core_1.varchar)("address", { length: 100 }),
     role: (0, exports.roleEnum)("role").default("user"),
     created_at: (0, pg_core_1.date)("created_at").notNull().default("now()"),
     updated_at: (0, pg_core_1.date)("updated_at").notNull().default("now()")
@@ -47,6 +47,7 @@ exports.vehicleSpecsTable = (0, pg_core_1.pgTable)("vehicle_specs", {
 exports.vehiclesTable = (0, pg_core_1.pgTable)("vehicles", {
     id: (0, pg_core_1.serial)("id").primaryKey(),
     vehicle_spec_id: (0, pg_core_1.integer)("vehicle_spec_id").references(() => exports.vehicleSpecsTable.id, { onDelete: 'cascade' }).notNull(),
+    rental_rate: (0, pg_core_1.decimal)("rental_rate", { precision: 10, scale: 2 }),
     availability: (0, exports.availabilityEnum)("availability").default("available"),
     created_at: (0, pg_core_1.date)("created_at").notNull().default("now()"),
     updated_at: (0, pg_core_1.date)("updated_at").notNull().default("now()")
