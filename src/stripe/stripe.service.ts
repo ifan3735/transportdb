@@ -37,7 +37,7 @@ export const createCheckoutSession = async (amount: number, currency: string, bo
                 price_data: {
                     currency: currency,
                     product_data: {
-                        name: 'Car rental',
+                        name: 'Nazarene Vehicle rental',
                     },
                     unit_amount: Math.round(amount),
                 },
@@ -84,5 +84,5 @@ export const handleWebhook = async (payload: string, sig: string, webhookSecret:
 
     } catch (err: any) {
         throw new Error(`Webhook Error: ${err.message}`);
-    }
+ }
 };
