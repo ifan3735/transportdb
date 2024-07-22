@@ -45,8 +45,8 @@ export const createCheckoutSession = async (amount: number, currency: string, bo
             },
         ],
         mode: 'payment',
-        success_url: 'http://localhost:5173/',
-        cancel_url: 'http://localhost:5173/',
+        success_url: 'http://localhost:5173/bookings',
+        cancel_url: 'http://localhost:5173/bookings',
     });
 
     const amountAsString = amount.toString();

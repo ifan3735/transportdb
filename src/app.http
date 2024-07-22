@@ -141,7 +141,7 @@ Content-Type: application/json
 
 {
     "user_id": "5",
-    "vehicle_id": "4",
+    "vehicle_id": "6",
     "location_id": "5",
     "booking_date": "2024-10-12",
     "return_date": "2024-10-15",

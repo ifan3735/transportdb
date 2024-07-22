@@ -29,8 +29,8 @@ export const getBooking = async (c: Context) => {
 export const createOneBooking = async (c: Context) => {
     try {
         const booking = await c.req.json();
-        await createBooking(booking);
-        return c.json("Booking created successfully", 201);
+        const newBooking =await createBooking(booking);
+        return c.json(newBooking);
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }

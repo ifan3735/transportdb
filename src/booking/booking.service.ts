@@ -26,8 +26,8 @@ export const getBookingService = async (id: number) => {
 }
 
 export const createBooking = async (booking: BookingSelect) => {
-    await db.insert(bookingsTable).values(booking);
-    return 'Booking created successfully';
+    const [newBooking] = await db.insert(bookingsTable).values(booking).returning({id: bookingsTable.id}).execute();
+    return newBooking
 };
 
 export const updateBooking = async (id: number, booking: BookingSelect) => {
