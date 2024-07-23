@@ -45,8 +45,8 @@ export const createCheckoutSession = async (amount: number, currency: string, bo
             },
         ],
         mode: 'payment',
-        success_url: 'https://brave-forest-03edfb90f.5.azurestaticapps.net',
-        cancel_url: 'https://brave-forest-03edfb90f.5.azurestaticapps.net',
+        success_url: 'https://brave-forest-03edfb90f.5.azurestaticapps.net/booking',
+        cancel_url: 'https://brave-forest-03edfb90f.5.azurestaticapps.net/booking',
     });
 
     const amountAsString = amount.toString();
