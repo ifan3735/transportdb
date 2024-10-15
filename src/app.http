@@ -305,7 +305,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/users
+GET http://localhost:3000/users/10
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJqdW54YXZAZ21haWwuY29tIiwiZXhwIjoxNzIwNzk5NTEzfQ.G_uXyyQvg17BaMBkst0U4ztbCXyCEJkH-nqvj_7ayLg
 
 
@@ -328,4 +328,13 @@ Content-Type: application/json
     "amount": "10000",
     "currency": "usd",
     "booking_id": "38"
+}
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+   "email": "junior@gmail.com",
+    "password": "12345678"
 }
