@@ -30,6 +30,8 @@ export const vehiclesService = async (limit?: number) => {
                     manufacturer: true,
                     seating_capacity: true,
                     model: true,
+                    fuel_type: true,
+                    color: true,
                 }
             },
             
