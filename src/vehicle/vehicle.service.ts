@@ -21,6 +21,7 @@ export const vehiclesService = async (limit?: number) => {
             rental_rate: true,
             created_at: true,
             updated_at: true,
+            image: true,
         },
         with: {
             vehicle_specs: {

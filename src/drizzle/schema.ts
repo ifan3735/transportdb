@@ -59,7 +59,7 @@ export const vehiclesTable = pgTable("vehicles", {
     vehicle_spec_id: integer("vehicle_spec_id").references(() => vehicleSpecsTable.id, { onDelete: 'cascade' }).notNull(),
     rental_rate: decimal("rental_rate", { precision: 10, scale: 2 }),
     availability: availabilityEnum("availability").default("available"),
-    image: text("image"),
+    image: text("image").default("https://via.placeholder.com/150"),
     image2: text("image2"),
     image3: text("image3"),
     image4: text("image4"),
