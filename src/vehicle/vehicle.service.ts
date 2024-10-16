@@ -37,6 +37,7 @@ export const vehiclesService = async (limit?: number) => {
                     date: true,
                     milage: true,
                     location: true,
+                    speed: true,
                 }
             },
             
