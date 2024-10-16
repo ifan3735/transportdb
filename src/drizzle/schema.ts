@@ -47,6 +47,8 @@ export const vehicleSpecsTable = pgTable("vehicle_specs", {
     seating_capacity: integer("seating_capacity").notNull(),
     color: varchar("color", { length: 100 }).notNull(),
     features: text("features").notNull(),
+    owner_image: text("owner_image"),
+    owner_name: varchar("owner_name", { length: 100 }),
     created_at: date("created_at").notNull().default("now()"),
     updated_at: date("updated_at").notNull().default("now()")
 });
