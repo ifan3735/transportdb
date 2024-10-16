@@ -32,6 +32,8 @@ export const vehiclesService = async (limit?: number) => {
                     model: true,
                     fuel_type: true,
                     color: true,
+                    owner_image: true,
+                    owner_name: true,
                 }
             },
             
