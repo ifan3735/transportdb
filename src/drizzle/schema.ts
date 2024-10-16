@@ -49,6 +49,7 @@ export const vehicleSpecsTable = pgTable("vehicle_specs", {
     features: text("features").notNull(),
     owner_image: text("owner_image"),
     date: date("date"),
+    milage: integer("milage"),
     owner_name: varchar("owner_name", { length: 100 }),
     created_at: date("created_at").notNull().default("now()"),
     updated_at: date("updated_at").notNull().default("now()")
