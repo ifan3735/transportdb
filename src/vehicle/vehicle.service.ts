@@ -25,6 +25,7 @@ export const vehiclesService = async (limit?: number) => {
             image2: true,
             image3: true,
             image4: true,
+            price: true,
         },
         with: {
             vehicle_specs: {

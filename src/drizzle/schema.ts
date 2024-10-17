@@ -69,6 +69,7 @@ export const vehiclesTable = pgTable("vehicles", {
     image2: text("image2"),
     image3: text("image3"),
     image4: text("image4"),
+    price: decimal("price", { precision: 10, scale: 2 }),
     created_at: date("created_at").notNull().default("now()"),
     updated_at: date("updated_at").notNull().default("now()")
 });
