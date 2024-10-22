@@ -11,7 +11,26 @@ export const paymentsService = async (limit?: number) => {
             limit: limit,
         });
     }
-    return await db.query.paymentsTable.findMany();
+    return await db.query.paymentsTable.findMany(
+        {
+            columns: {
+                id: true,
+                amount: true,
+                payment_method: true,
+                payment_status: true,
+                transaction_id: true,
+                created_at: true,
+                updated_at: true,
+            },
+            with: {
+                booking: {
+                    columns: {
+                        id: true,
+                    }
+                },
+            }
+        }
+    );
 };
 
 export const getPaymentService = async (id: number) => {
