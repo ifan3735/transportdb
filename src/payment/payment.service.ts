@@ -21,6 +21,7 @@ export const paymentsService = async (limit?: number) => {
                 transaction_id: true,
                 created_at: true,
                 updated_at: true,
+                payment_date: true,
             },
             with: {
                 booking: {
