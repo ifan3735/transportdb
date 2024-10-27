@@ -45,7 +45,7 @@ export const createCheckoutSession = async (amount: number, currency: string, bo
             },
         ],
         mode: 'payment',
-        success_url: 'http://localhost:5173/dashboard',
+        success_url: 'http://localhost:5173/success',
         cancel_url: 'http://localhost:5173/dashboard',
     });
 
