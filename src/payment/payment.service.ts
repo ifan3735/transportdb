@@ -28,6 +28,7 @@ export const paymentsService = async (limit?: number) => {
                 booking: {
                     columns: {
                         id: true,
+                        user_id: true,
                     }
                 },
             }
