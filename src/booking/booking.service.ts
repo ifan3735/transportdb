@@ -12,7 +12,57 @@ export const bookingsService = async (limit?: number) => {
             limit: limit,
         });
     }
-    return await db.query.bookingsTable.findMany();
+    return await db.query.bookingsTable.findMany(
+        {
+            columns: {
+                id: true,
+                vehicle_id: true,
+                user_id: true,
+                location_id: true,
+                booking_date: true,
+                return_date: true,
+                booking_status: true,
+                total_amount: true,
+                created_at: true,
+                updated_at: true,
+            },
+            with: {
+                vehicle: {
+                    columns: {
+                        availability: true,
+                        id: true,
+                        rental_rate: true,
+                        created_at: true,
+                        updated_at: true,
+                        image: true,
+                        image2: true,
+                        image3: true,
+                        image4: true,
+                        price: true,
+                    },
+                    with: {
+                        vehicle_specs: {
+                            columns: {
+                                id: true,
+                                manufacturer: true,
+                                seating_capacity: true,
+                                model: true,
+                                fuel_type: true,
+                                color: true,
+                                owner_image: true,
+                                owner_name: true,
+                                date: true,
+                                milage: true,
+                                location: true,
+                                speed: true,
+                                transmission: true,
+                            }
+                        },
+                    }
+                }
+            }
+        }
+    );
 };
 
 export const getBookingService = async (id: number) => {
