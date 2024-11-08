@@ -56,6 +56,7 @@ export const bookingsService = async (limit?: number) => {
                                 location: true,
                                 speed: true,
                                 transmission: true,
+                                features: true,
                             }
                         },
                     }
