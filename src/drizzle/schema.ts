@@ -82,12 +82,12 @@ export const bookingsTable = pgTable("bookings", {
     user_id: integer("user_id").references(() => usersTable.id, { onDelete: 'cascade' }).notNull(),
     vehicle_id: integer("vehicle_id").references(() => vehiclesTable.id, { onDelete: 'cascade' }).notNull(),
     location_id: integer("location_id").references(() => locationsTable.id, { onDelete: 'cascade' }).notNull(),
-    booking_date: date("booking_date").notNull().default("now()"),
-    return_date: date("return_date").notNull().default("now()"),
+    booking_date: date("booking_date").notNull().defaultNow(),  // Default to the current date
+    return_date: date("return_date").notNull().defaultNow(),    // Default to the current date
     total_amount: decimal("total_amount", { precision: 10, scale: 2 }).notNull(),
     booking_status: varchar("booking_status", {length: 100}).default("pending"),
-    created_at: date("created_at").notNull().default("now()"),
-    updated_at: date("updated_at").notNull().default("now()")
+    created_at: date("created_at").notNull().defaultNow(),  // Default to the current timestamp
+    updated_at: date("updated_at").notNull().defaultNow()   // Default to the current timestamp
 });
 
 export type BookingSelect = typeof bookingsTable.$inferSelect;
