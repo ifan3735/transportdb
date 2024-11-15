@@ -17,6 +17,7 @@ export const usersTable = pgTable("users", {
     address: varchar("address", { length: 100 }),
     role: roleEnum("role").default("user"),
     currency_used: varchar("currency_used", { length: 10 }).default("USD"),
+    state: varchar("state", { length: 100 }).default("Nairobi"),
     created_at: date("created_at").notNull().default("now()"),
     updated_at: date("updated_at").notNull().default("now()")
 });
